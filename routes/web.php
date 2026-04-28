@@ -70,3 +70,17 @@ Route::middleware(['auth', CheckAdmin::class])->prefix('admin')->group(function 
     Route::get('/orders/detail/{id}', [AdminController::class, 'orderDetail']);
     Route::post('/orders/update-status/{id}', [AdminController::class, 'orderUpdateStatus']);
 });
+
+    // --- KHU VỰC QUÊN MẬT KHẨU ---
+
+    // 1. Trang nhập email để yêu cầu khôi phục
+    Route::get('/forgot-password', [AuthController::class, 'showForgotForm']);
+
+    // 2. Nơi xử lý gửi email chứa link có Token
+    Route::post('/forgot-password', [AuthController::class, 'sendResetLink']);
+
+    // 3. Trang nhập mật khẩu mới (khi khách click vào link trong email)
+    Route::get('/reset-password/{token}', [AuthController::class, 'showResetForm']);
+
+    // 4. Xử lý đổi mật khẩu và lưu vào Database
+    Route::post('/reset-password', [AuthController::class, 'updatePassword']);

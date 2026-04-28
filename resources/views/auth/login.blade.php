@@ -84,7 +84,7 @@
                 </form>
                 
                 <div class="login-links">
-                    <a href="#">Quên mật khẩu</a>
+                    <a href="/forgot-password">Quên mật khẩu</a>
                     <a href="#">Đăng nhập với SMS</a>
                 </div>
                 
